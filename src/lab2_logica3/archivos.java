@@ -50,14 +50,14 @@ public class archivos {
                 objDeportista.setPrimerApellido(datos[0]);
                 objDeportista.setSegundoApellido(datos[1]);
                 objDeportista.setNombre(datos[2]);
-                objDeportista.setCedula(Integer.parseInt(datos[3]));
+                objDeportista.setCedula(Long.parseLong(datos[3]));
                 objDeportista.setEmail(datos[4]);
                 objDeportista.setPuntaje(Double.parseDouble(datos[5]));
                 lstDeportista.add(objDeportista);
             }
 
         } catch (Exception e) {
-            System.err.println("No se encontro archivo");
+            System.err.println("Error consultando los datos de los deportistas");
         }
 
         return lstDeportista;

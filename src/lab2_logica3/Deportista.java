@@ -35,11 +35,11 @@ public class Deportista {
         this.segundoApellido = segundoApellido;
     }
 
-    public int getCedula() {
+    public Long getCedula() {
         return cedula;
     }
 
-    public void setCedula(int cedula) {
+    public void setCedula(Long cedula) {
         this.cedula = cedula;
     }
 
@@ -62,7 +62,7 @@ public class Deportista {
     private String nombre;
     private String primerApellido;
     private String segundoApellido;
-    private int  cedula;
+    private Long  cedula;
     private String email;
     private double puntaje;
 }

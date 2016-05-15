@@ -9,6 +9,7 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.List;
 
 /**
  *
@@ -23,7 +24,7 @@ public class torneo_bolos {
     public static void main(String[] args) throws FileNotFoundException, IOException {
         // TODO code application logic here
         
-                int numLineas=500;
+             /*   int numLineas=500;
                 int contador=0;
                 
                 String ruta_archivo = "./src/lab2_logica3/puntajes_bolos.txt";
@@ -45,10 +46,21 @@ public class torneo_bolos {
         //leer un TXT
         
         archivos a = new archivos();
-        String s1 = a.leerTxt(ruta_archivo);
+        String s1 = a.leerTxt(ruta_archivo);*/
+             String ruta_archivo = "./src/lab2_logica3/puntajes_bolos.txt";
+        List<Deportista> dp = new archivos().CrearDeportistas(ruta_archivo);
+        abb arbol = new abb();
+        for (Deportista item : dp) {
+            arbol.insertar(item);
+        }
         
-        System.out.println("archivo completo == " + s1); 
-        System.out.print( "\n\n\n" );
+        arbol.inOrder();
+     
+        
+        
+        
+        /*System.out.println("archivo completo == " + s1); 
+        System.out.print( "\n\n\n" );*/
     }
     
 }
