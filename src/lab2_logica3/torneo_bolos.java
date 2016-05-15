@@ -26,8 +26,8 @@ public class torneo_bolos {
                 int numLineas=500;
                 int contador=0;
                 
-                String ruta_archivo = "C:\\Users\\Ricardo\\Documents\\UdeA\\Logica 3\\lab 2\\lab2_logica3\\src\\lab2_logica3\\puntajes_bolos.txt";
-
+                String ruta_archivo = "./src/lab2_logica3/puntajes_bolos.txt";
+               
                 String datos []=new String [numLineas];
 
                 BufferedReader reader = new BufferedReader(new FileReader(ruta_archivo));

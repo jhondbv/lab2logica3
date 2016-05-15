@@ -14,12 +14,12 @@ public class abb {
     private class nodoArbol {
         private abb ld;
         private abb li;
-        private int dato;
+        private Deportista dato;
  
         private void nodoArbol(){
             ld = null;
             li = null;
-            dato = 0;
+            dato = null;
         }
     }
  
@@ -33,27 +33,27 @@ public class abb {
         return (raiz == null);
     }
  
-    public void insertar(int a){
+    public void insertar(Deportista deportista){
         if (esVacio()) {
             nodoArbol nuevo = new nodoArbol();
-            nuevo.dato = a;
+            nuevo.dato = deportista;
             nuevo.ld = new abb();
             nuevo.li = new abb();
             raiz = nuevo;
         }
         else {
-            if (a > raiz.dato) {
-                (raiz.ld).insertar(a);
+            if (deportista.getCedula() > raiz.dato.getCedula()) {
+                (raiz.ld).insertar(deportista);
             }
-            if (a < raiz.dato){
-                (raiz.li).insertar(a);
+            if (deportista.getCedula() < raiz.dato.getCedula()){
+                (raiz.li).insertar(deportista);
             }
         }
     }
  
     public void preOrder(){
         if (!esVacio()) {
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.li.preOrder();
             raiz.ld.preOrder();
         }
@@ -62,7 +62,7 @@ public class abb {
     public void inOrder(){
         if (!esVacio()) {
             raiz.li.inOrder();
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.ld.inOrder();
         }
     }
@@ -71,40 +71,40 @@ public class abb {
         if (!esVacio()) {
             raiz.ld.posOrder();
             raiz.li.posOrder();
-            System.out.print( raiz.dato + ", "  );
+            System.out.print( raiz.dato.getCedula() + ", "  );
  
         }
     }
  
-    public abb buscar(int a){
+    public abb buscar(Deportista deportista){
         abb arbolito = null;
         if (!esVacio()) {
-            if (a == raiz.dato) {
+            if (deportista.getCedula() == raiz.dato.getCedula()) {
             return this;
             }
             else {
-                if (a < raiz.dato) {
-                    arbolito = raiz.li.buscar(a);
+                if (deportista.getCedula() < raiz.dato.getCedula()) {
+                    arbolito = raiz.li.buscar(deportista);
                 }
                 else {
-                    arbolito = raiz.ld.buscar(a);
+                    arbolito = raiz.ld.buscar(deportista);
                 }
             }
         }
         return arbolito;
     }
  
-    public boolean existe(int a){
+    public boolean existe(Deportista deportista){
     if (!esVacio()) {
-            if (a == raiz.dato) {
+            if (deportista.getCedula() == raiz.dato.getCedula()) {
             return true;
             }
             else {
-                if (a < raiz.dato) {
-                    raiz.li.existe(a);
+                if (deportista.getCedula() < raiz.dato.getCedula()) {
+                    raiz.li.existe(deportista);
                 }
                 else {
-                    raiz.ld.existe(a);
+                    raiz.ld.existe(deportista);
                 }
             }
         }
@@ -129,22 +129,22 @@ public class abb {
         }
     }
  
-    public int buscarMin() {
+    public Deportista buscarMin() {
         abb arbolActual = this;
         while( !arbolActual.raiz.li.esVacio() ) {
             arbolActual = arbolActual.raiz.li;
         }
-        int devuelvo= arbolActual.raiz.dato;
+        Deportista devuelvo = arbolActual.raiz.dato;
         arbolActual.raiz=null;
         return devuelvo;
     }
  
-    public int buscarMan() {
+    public Deportista buscarMax() {
         abb arbolActual = this;
         while( !arbolActual.raiz.ld.esVacio() ) {
             arbolActual = arbolActual.raiz.ld;
         }
-        int devuelvo= arbolActual.raiz.dato;
+        Deportista devuelvo= arbolActual.raiz.dato;
             arbolActual.raiz=null;
         return devuelvo;
     }
@@ -157,7 +157,7 @@ public class abb {
         return hoja;
     }
  
-    public void eliminar(int a) {
+    public void eliminar(Deportista a) {
         abb paraEliminar = buscar(a);
         if (!paraEliminar.esVacio()) {
             if (paraEliminar.esHoja()) {
