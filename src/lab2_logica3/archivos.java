@@ -35,14 +35,14 @@ public class archivos {
      * @param direccion ruta del archivo de texto 
      * @return Lista de deportistas 
      */
-    
-    public List<Deportista> CrearDeportistas(String direccion) {
-        
-        List<Deportista> lstDeportista = new ArrayList<Deportista>();
          Vector <Double> puntajes = new Vector <Double>();
          Vector <Long> cedulas = new Vector <Long>();
          Vector <String> nombres = new Vector <String>();
          Vector <String> apellidos = new Vector <String>();
+
+    public List<Deportista> CrearDeportistas(String direccion) {
+        
+        List<Deportista> lstDeportista = new ArrayList<Deportista>();
 
         try {
             BufferedReader bf = new BufferedReader(new FileReader(direccion));
@@ -70,8 +70,18 @@ public class archivos {
                
             }       
         
-                
-           Double resultado = puntajes.elementAt(0);
+                                      
+        } catch (Exception e) {
+            System.err.println("Error consultando los datos de los deportistas");
+        }
+        
+        return lstDeportista;
+
+    }
+    
+      public void mostrarMayor()
+      {
+           double resultado = puntajes.elementAt(0);
            Long cedulaResul = null;
            String nom   = " ";
            String ape   = " ";
@@ -93,18 +103,10 @@ public class archivos {
                            cedulaResul = cedulas.elementAt(j);
                            nom = nombres.elementAt(j);
                            ape = apellidos.elementAt(j);
-                          System.out.println("==> " + nom +" "+ape+" con cedula " + cedulaResul);
+                          System.out.println("==> " + nom +" "+ape+" con Cédula " + cedulaResul);
                          
                }  j++;
                     }  
-                        
-        } catch (Exception e) {
-            System.err.println("Error consultando los datos de los deportistas");
-        }
-
-        return lstDeportista;
-
-    }
+      }
     
-        
 }

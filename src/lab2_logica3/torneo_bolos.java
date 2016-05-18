@@ -12,6 +12,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Scanner;
 
+
 /**
  *
  * @author Ricardo Roldan Smirnov
@@ -48,7 +49,7 @@ public class torneo_bolos {
         
         archivos a = new archivos();
         String s1 = a.leerTxt(ruta_archivo);*/
-             String ruta_archivo = "./src/lab2_logica3/puntajes_bolos.txt";
+        String ruta_archivo = "./src/lab2_logica3/puntajes_bolos.txt";
         List<Deportista> dp = new archivos().CrearDeportistas(ruta_archivo);
         abb arbol = new abb();
         for (Deportista item : dp) {
@@ -56,12 +57,40 @@ public class torneo_bolos {
         }
         
         arbol.inOrder();
-     
-        System.out.println("\n Escriba el Numero de cedula que desea buscar: ");
-        Deportista d = new Deportista();
-        abb b = new abb();
-        Scanner sc = new Scanner(System.in);
-        String ced = sc.nextLine();
+      
+       Scanner sc = new Scanner(System.in);
+        int elec = 0;
+        Long cedula = null;
+        
+        
+        System.out.println("**BIENVENIDO**\n\n");
+        System.out.println("||||||||MENU|||||||||\n 1. Mostrar la informacion de un Deportista. \n 2. Mostrar los Mayores puntajes de la lista.\n");
+
+
+        
+        while (elec != 3) {
+            System.out.println("Ingrese el numero de la operacion que desea realizar: ");
+            elec = sc.nextInt();
+            switch (elec) {
+                case 1:
+                    System.out.println("Digite el Numero de Cedula del deportista que quiere consultar:");
+                    cedula = sc.nextLong();
+                        
+                    //Codigo para buscar al deportista.
+                    
+                    break;
+                case 2:
+                   //Codigo Mayores
+                  
+                 
+                    break;
+
+                case 3:
+                    System.err.println("Hasta la proxima.");
+                    break;
+            }
+       
+  
       
        // System.out.println(d.getNombre());
         
@@ -69,4 +98,5 @@ public class torneo_bolos {
         System.out.print( "\n\n\n" );*/
     }
     
+}
 }

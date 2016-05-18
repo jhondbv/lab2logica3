@@ -89,7 +89,7 @@ public class abb {
     public void inOrder(){
         if (!esVacio()) {
             raiz.li.inOrder();
-            System.out.print( raiz.dato.getCedula() + ", "  );
+           //  System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.ld.inOrder();
         }
     }
