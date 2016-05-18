@@ -3,6 +3,7 @@ package lab2_logica3;
 import java.io.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Vector;
 
 public class archivos {
 
@@ -34,18 +35,25 @@ public class archivos {
      * @param direccion ruta del archivo de texto 
      * @return Lista de deportistas 
      */
+    
     public List<Deportista> CrearDeportistas(String direccion) {
         
         List<Deportista> lstDeportista = new ArrayList<Deportista>();
+         Vector <Double> puntajes = new Vector <Double>();
+         Vector <Long> cedulas = new Vector <Long>();
+         Vector <String> nombres = new Vector <String>();
+         Vector <String> apellidos = new Vector <String>();
 
         try {
             BufferedReader bf = new BufferedReader(new FileReader(direccion));
             String temp = "";
             String bfRead;
+
             while ((bfRead = bf.readLine()) != null) {
 
                 temp = bfRead; //guardado el texto del archivo
                 String[] datos = temp.split(";");
+                
                 Deportista objDeportista = new Deportista();
                 objDeportista.setPrimerApellido(datos[0]);
                 objDeportista.setSegundoApellido(datos[1]);
@@ -53,9 +61,43 @@ public class archivos {
                 objDeportista.setCedula(Long.parseLong(datos[3]));
                 objDeportista.setEmail(datos[4]);
                 objDeportista.setPuntaje(Double.parseDouble(datos[5]));
+                puntajes.add(Double.parseDouble(datos[5]));
+                cedulas.add(Long.parseLong(datos[3]));
+                nombres.add(datos[2]);
+                apellidos.add(datos[0]);
+                
                 lstDeportista.add(objDeportista);
-            }
-
+               
+            }       
+        
+                
+           Double resultado = puntajes.elementAt(0);
+           Long cedulaResul = null;
+           String nom   = " ";
+           String ape   = " ";
+           
+             for(int i=0; i<puntajes.size(); i++) 
+                    { 
+               if(puntajes.elementAt(i) > resultado) 
+                { 
+                resultado = puntajes.elementAt(i);            
+                } 
+                }
+             double resul = resultado;
+             System.out.println("MAYOR PUNTAJE: "+resultado+"\n");
+             int j=0;
+               while( j<puntajes.size()) 
+                    { 
+                 if(resul == puntajes.elementAt(j))
+               {
+                           cedulaResul = cedulas.elementAt(j);
+                           nom = nombres.elementAt(j);
+                           ape = apellidos.elementAt(j);
+                          System.out.println("==> " + nom +" "+ape+" con cedula " + cedulaResul);
+                         
+               }  j++;
+                    }  
+                        
         } catch (Exception e) {
             System.err.println("Error consultando los datos de los deportistas");
         }
@@ -63,5 +105,6 @@ public class archivos {
         return lstDeportista;
 
     }
-
+    
+        
 }

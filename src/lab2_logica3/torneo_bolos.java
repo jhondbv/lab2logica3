@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  *
@@ -56,8 +57,13 @@ public class torneo_bolos {
         
         arbol.inOrder();
      
-        
-        
+        System.out.println("\n Escriba el Numero de cedula que desea buscar: ");
+        Deportista d = new Deportista();
+        abb b = new abb();
+        Scanner sc = new Scanner(System.in);
+        String ced = sc.nextLine();
+      
+       // System.out.println(d.getNombre());
         
         /*System.out.println("archivo completo == " + s1); 
         System.out.print( "\n\n\n" );*/

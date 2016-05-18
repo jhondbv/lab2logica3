@@ -5,6 +5,8 @@
  */
 package lab2_logica3;
 
+import java.util.Scanner;
+
 /**
  *
  * @author Ricardo
@@ -24,6 +26,7 @@ public class abb {
     }
  
     public nodoArbol raiz;
+    
  
     public void abb(){
         nodoArbol raiz = new nodoArbol();
@@ -50,6 +53,30 @@ public class abb {
             }
         }
     }
+      
+    public abb buscar(Deportista deportista){
+      abb arbolito = null;
+      
+       if (!esVacio()) {
+            if (deportista.getCedula() == raiz.dato.getCedula()) {
+            return this;
+            }
+            else {
+                if (deportista.getCedula() < raiz.dato.getCedula()) {
+                    arbolito = raiz.li.buscar(deportista);
+                }
+                else {
+                    arbolito = raiz.ld.buscar(deportista);
+                }
+            }
+            
+        }
+       
+        return arbolito;
+    }
+  
+    
+   
  
     public void preOrder(){
         if (!esVacio()) {
@@ -76,23 +103,7 @@ public class abb {
         }
     }
  
-    public abb buscar(Deportista deportista){
-        abb arbolito = null;
-        if (!esVacio()) {
-            if (deportista.getCedula() == raiz.dato.getCedula()) {
-            return this;
-            }
-            else {
-                if (deportista.getCedula() < raiz.dato.getCedula()) {
-                    arbolito = raiz.li.buscar(deportista);
-                }
-                else {
-                    arbolito = raiz.ld.buscar(deportista);
-                }
-            }
-        }
-        return arbolito;
-    }
+    
  
     public boolean existe(Deportista deportista){
     if (!esVacio()) {
@@ -176,5 +187,12 @@ public class abb {
                 }
             }
         }
+    }
+   
+    public Deportista getDato()
+    {
+        Deportista dep = new Deportista();
+        dep = raiz.dato;
+        return dep;
     }
 }
