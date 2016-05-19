@@ -74,13 +74,13 @@ public class archivos {
         } catch (Exception e) {
             System.err.println("Error consultando los datos de los deportistas");
         }
-        
         return lstDeportista;
 
     }
     
-      public void mostrarMayor()
+      public void mostrarMayor(String direc)
       {
+           CrearDeportistas(direc);
            double resultado = puntajes.elementAt(0);
            Long cedulaResul = null;
            String nom   = " ";

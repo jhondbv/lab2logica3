@@ -59,6 +59,7 @@ public class torneo_bolos {
         arbol.inOrder();
       
        Scanner sc = new Scanner(System.in);
+       
         int elec = 0;
         Long cedula = null;
         
@@ -88,9 +89,8 @@ public class torneo_bolos {
                     +"\n");
                     break;
                 case 2:
-                   //Codigo Mayores
-                  
-                 
+                  archivos arc = new archivos();
+                  arc.mostrarMayor(ruta_archivo);
                     break;
 
                 case 3:
