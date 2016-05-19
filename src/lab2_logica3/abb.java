@@ -54,11 +54,13 @@ public class abb {
         }
     }
       
+  
+    
     public abb buscar(Deportista deportista){
       abb arbolito = null;
       
        if (!esVacio()) {
-            if (deportista.getCedula() == raiz.dato.getCedula()) {
+            if (deportista.getCedula().equals(raiz.dato.getCedula())) {
             return this;
             }
             else {
@@ -89,7 +91,7 @@ public class abb {
     public void inOrder(){
         if (!esVacio()) {
             raiz.li.inOrder();
-           //  System.out.print( raiz.dato.getCedula() + ", "  );
+             System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.ld.inOrder();
         }
     }

@@ -77,7 +77,15 @@ public class torneo_bolos {
                     cedula = sc.nextLong();
                         
                     //Codigo para buscar al deportista.
-                    
+                    Deportista dep = new Deportista();
+                    dep.setCedula(cedula);
+                    abb depRaiz = arbol.buscar(dep);
+                    System.out.println("\n Los datos del deportista son : \n Nombre: "+depRaiz.getDato().getNombre()
+                    +"\n Primer Apellido :"+ depRaiz.getDato().getPrimerApellido()
+                    +"\n Segundo Apellido :"+ depRaiz.getDato().getSegundoApellido()
+                    +"\n Cedula:  "+ depRaiz.getDato().getCedula()
+                    +"\n Puntaje: "+ depRaiz.getDato().getPuntaje()
+                    +"\n");
                     break;
                 case 2:
                    //Codigo Mayores
