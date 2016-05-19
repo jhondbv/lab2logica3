@@ -30,16 +30,16 @@ public class archivos {
 
     }
 
-    /**
+  
+         Vector <Double> puntajes = new Vector <Double>();  //vectores usados para hallar los puntajes mayores
+         Vector <Long> cedulas = new Vector <Long>();       
+         Vector <String> nombres = new Vector <String>();
+         Vector <String> apellidos = new Vector <String>();
+  /**
      * Crea los objetos deportistas a partir de un archivo de texto
      * @param direccion ruta del archivo de texto 
      * @return Lista de deportistas 
      */
-         Vector <Double> puntajes = new Vector <Double>();
-         Vector <Long> cedulas = new Vector <Long>();
-         Vector <String> nombres = new Vector <String>();
-         Vector <String> apellidos = new Vector <String>();
-
     public List<Deportista> CrearDeportistas(String direccion) {
         
         List<Deportista> lstDeportista = new ArrayList<Deportista>();
@@ -66,7 +66,7 @@ public class archivos {
                 nombres.add(datos[2]);
                 apellidos.add(datos[0]);
                 
-                lstDeportista.add(objDeportista);
+                lstDeportista.add(objDeportista); //agrega lodos los objetos Deportista a un lista
                
             }       
         
@@ -78,7 +78,11 @@ public class archivos {
 
     }
     
-      public void mostrarMayor(String direc)
+    /**
+     * muestra el/los deportistas con mayor puntaje.
+     * @param direc 
+     */
+      public void mostrarMayor(String direc) //metodo que muestra el/los deportistas con mayor puntaje.
       {
            CrearDeportistas(direc);
            double resultado = puntajes.elementAt(0);

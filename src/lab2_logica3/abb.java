@@ -7,10 +7,7 @@ package lab2_logica3;
 
 import java.util.Scanner;
 
-/**
- *
- * @author Ricardo
- */
+
 public class abb {
  
     private class nodoArbol {
@@ -32,11 +29,16 @@ public class abb {
         nodoArbol raiz = new nodoArbol();
     }
  
-    public boolean esVacio(){
+    public boolean esVacio(){ //comprueba si el arbol esta vacio
         return (raiz == null);
     }
+    /**
+     * inserta los objetos deportista al arbol binario de busqueda
+     * @param deportista 
+     * 
+     */
  
-    public void insertar(Deportista deportista){
+    public void insertar(Deportista deportista){ //metodo para insertar los objetos deportista al arbol binario de busqueda
         if (esVacio()) {
             nodoArbol nuevo = new nodoArbol();
             nuevo.dato = deportista;
@@ -55,8 +57,12 @@ public class abb {
     }
       
   
-    
-    public abb buscar(Deportista deportista){
+    /**
+     * 
+     * @param deportista
+     * @return Arbol en cuya raiz se encuentra el dato qbuscado
+     */
+    public abb buscar(Deportista deportista){  //encuentra el nodo donde se encuentra el deportista que busco
       abb arbolito = null;
       
        if (!esVacio()) {
@@ -79,24 +85,30 @@ public class abb {
   
     
    
- 
-    public void preOrder(){
+/**
+ * organiza el arbol en preorder
+ */
+    public void preOrder(){ //organiza el arbol en preorder
         if (!esVacio()) {
             System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.li.preOrder();
             raiz.ld.preOrder();
         }
     }
- 
-    public void inOrder(){
+ /**
+  * organiza el arbol en inorder
+  */
+    public void inOrder(){ //organiza el arbol en inorder
         if (!esVacio()) {
             raiz.li.inOrder();
            //  System.out.print( raiz.dato.getCedula() + ", "  );
             raiz.ld.inOrder();
         }
     }
- 
-    public void posOrder(){
+ /**
+  * organiza el arbol en posorder
+  */
+    public void posOrder(){ //organiza el arbol en posorder
         if (!esVacio()) {
             raiz.ld.posOrder();
             raiz.li.posOrder();
@@ -106,7 +118,11 @@ public class abb {
     }
  
     
- 
+ /**
+  * 
+  * @param deportista
+  * @return booleano que determina si el deportista existe o no. 
+  */
     public boolean existe(Deportista deportista){
     if (!esVacio()) {
             if (deportista.getCedula() == raiz.dato.getCedula()) {
@@ -123,8 +139,11 @@ public class abb {
         }
         return false;
     }
- 
-    public int cantidad(){
+ /**
+  * 
+  * @return numero de deportistas que contiene el arbol
+  */
+    public int cantidad(){ //regrsa el numero de deportistas que contiene el arbol
         if (esVacio()) {
             return 0;
         }
@@ -132,7 +151,10 @@ public class abb {
             return (1 + raiz.ld.cantidad() + raiz.li.cantidad());
         }
     }
- 
+ /**
+  * 
+  * @return numero de niveles del arbol
+  */
     public int altura() {
         if (esVacio()) {
             return 0;
@@ -141,8 +163,11 @@ public class abb {
             return (1 + Math.max(((raiz.li).altura()), ((raiz.ld).altura())));
         }
     }
- 
-    public Deportista buscarMin() {
+ /**
+  * 
+  * @return deportista con el numero de cedula mas pequeno
+  */
+    public Deportista buscarMin() { // busca en el arbol al deportista con el numero de cedula mas pequeno
         abb arbolActual = this;
         while( !arbolActual.raiz.li.esVacio() ) {
             arbolActual = arbolActual.raiz.li;
@@ -151,8 +176,11 @@ public class abb {
         arbolActual.raiz=null;
         return devuelvo;
     }
- 
-    public Deportista buscarMax() {
+ /**
+  * 
+  * @return deportista con el numero de cedula mas grande 
+  */
+    public Deportista buscarMax() {// busca en el arbol al deportista con el numero de cedula mas grande
         abb arbolActual = this;
         while( !arbolActual.raiz.ld.esVacio() ) {
             arbolActual = arbolActual.raiz.ld;
@@ -161,16 +189,22 @@ public class abb {
             arbolActual.raiz=null;
         return devuelvo;
     }
- 
-    public boolean esHoja() {
+ /**
+  * 
+  * @return booleano que determina si es hoja o no.
+  */
+    public boolean esHoja() { 
         boolean hoja = false;
         if( (raiz.li).esVacio() && (raiz.ld).esVacio() ) {
             hoja = true;
         }
         return hoja;
     }
- 
-    public void eliminar(Deportista a) {
+ /**
+  * elimina un deportista del arbol binario de busqueda
+  * @param a 
+  */
+    public void eliminar(Deportista a) { //elimina un deportista del arbol binario de busqueda
         abb paraEliminar = buscar(a);
         if (!paraEliminar.esVacio()) {
             if (paraEliminar.esHoja()) {
@@ -190,8 +224,11 @@ public class abb {
             }
         }
     }
-   
-    public Deportista getDato()
+   /**
+    * 
+    * @return  dato de tipo Deportista contenido en el arbol
+    */
+    public Deportista getDato() //regresa el dato de tipo Deportista
     {
         Deportista dep = new Deportista();
         dep = raiz.dato;
