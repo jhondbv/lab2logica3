@@ -31,10 +31,7 @@ public class archivos {
     }
 
   
-         Vector <Double> puntajes = new Vector <Double>();  //vectores usados para hallar los puntajes mayores
-         Vector <Long> cedulas = new Vector <Long>();       
-         Vector <String> nombres = new Vector <String>();
-         Vector <String> apellidos = new Vector <String>();
+
   /**
      * Crea los objetos deportistas a partir de un archivo de texto
      * @param direccion ruta del archivo de texto 
@@ -61,10 +58,7 @@ public class archivos {
                 objDeportista.setCedula(Long.parseLong(datos[3]));
                 objDeportista.setEmail(datos[4]);
                 objDeportista.setPuntaje(Double.parseDouble(datos[5]));
-                puntajes.add(Double.parseDouble(datos[5]));
-                cedulas.add(Long.parseLong(datos[3]));
-                nombres.add(datos[2]);
-                apellidos.add(datos[0]);
+
                 
                 lstDeportista.add(objDeportista); //agrega lodos los objetos Deportista a un lista
                
@@ -77,40 +71,5 @@ public class archivos {
         return lstDeportista;
 
     }
-    
-    /**
-     * muestra el/los deportistas con mayor puntaje.
-     * @param direc 
-     */
-      public void mostrarMayor(String direc) //metodo que muestra el/los deportistas con mayor puntaje.
-      {
-           CrearDeportistas(direc);
-           double resultado = puntajes.elementAt(0);
-           Long cedulaResul = null;
-           String nom   = " ";
-           String ape   = " ";
-           
-             for(int i=0; i<puntajes.size(); i++) 
-                    { 
-               if(puntajes.elementAt(i) > resultado) 
-                { 
-                resultado = puntajes.elementAt(i);            
-                } 
-                }
-             double resul = resultado;
-             System.out.println("MAYOR PUNTAJE: "+resultado+"\n");
-             int j=0;
-               while( j<puntajes.size()) 
-                    { 
-                 if(resul == puntajes.elementAt(j))
-               {
-                           cedulaResul = cedulas.elementAt(j);
-                           nom = nombres.elementAt(j);
-                           ape = apellidos.elementAt(j);
-                          System.out.println("==> " + nom +" "+ape+" con Cédula " + cedulaResul);
-                         
-               }  j++;
-                    }  
-      }
-    
+          
 }
