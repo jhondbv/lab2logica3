@@ -50,7 +50,7 @@ public class torneo_bolos {
         }
         arbol.inOrder();
 
-        System.out.println("||||||||MENU|||||||||\n 1. Mostrar la informacion de un Deportista. \n 2. Mostrar los Mayores puntajes de la lista.\n");
+        System.out.println("||||||||MENU|||||||||\n 1. Mostrar la informacion de un Deportista. \n 2. Mostrar los Mayores puntajes de la lista.\n 3. Salir\n");
 
         while (elec != 3) {
             System.out.println("Ingrese el numero de la operacion que desea realizar: ");
