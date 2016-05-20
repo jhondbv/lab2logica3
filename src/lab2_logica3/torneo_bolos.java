@@ -73,8 +73,10 @@ public class torneo_bolos {
                     break;
                 case 2:
                     //Mayores puntajes
-                  archivos arc = new archivos();
-                  arc.mostrarMayor(ruta_archivo);
+                  //archivos arc = new archivos();
+                  //arc.mostrarMayor(ruta_archivo);
+                    List<Deportista> dpo = arbol.buscarMaxDeportista();
+                   arbol.MostrarDeportistas(dpo);
                     break;
 
                 case 3:
